@@ -1,23 +1,21 @@
 package com.ssm.controller;
 
-import javax.annotation.Resource;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ssm.UserService.UserService;
 import com.ssm.pojo.User;
+import com.ssm.service.UserService;
 
 @Controller
 @RequestMapping(value = "/login")
 public class UserController {
-	@Resource
+	@Autowired
 	private UserService userService;
-
 	@RequestMapping(value = "/submit")
 	public String submit(User user) throws Exception{
-		boolean loginType = userService.login(user.getUserName(), user.getUserPassword());
+		System.out.println("username:"+ user.getUsername());
+		boolean loginType = userService.login(user.getUsername(), user.getPassword());
 
 		if(loginType == true){
 			return "success";
@@ -25,5 +23,11 @@ public class UserController {
 			return "failed";
 		}
 
+	}
+	
+	@RequestMapping(value = "/simple")
+	public String simple(String username) throws Exception{
+		System.out.println("username:"+ username);
+		return "success";
 	}
 }

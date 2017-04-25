@@ -7,7 +7,7 @@
 <title>Add User</title>
 </head>
 <body>
-	<form action="/login/submit" method = "post" name = "loginfrom">
+	<form action="/login/submit.action" method = "post" name = "loginfrom">
 		<table>
 			<tr>
 				<td>用户名:<input name="username" type="text" /></td>
